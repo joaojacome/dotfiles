@@ -333,16 +333,15 @@ label =  %{T4} %output% %{T-}
 format-underline = #1db954
 line-size = 1
 
-
 [module/playpause]
-<<<<<<< HEAD
-type = custom/ipc
-; Default
-hook-0 = echo ""
-; Playing
-hook-1 = echo ""
-initial = 1
+type = custom/script
+interval = 3
+exec = if [ -n "$(playerctl status 2>/dev/null)" ]; then if [ $(playerctl status) = "Playing" ]; then echo ""; else echo ""; fi; else echo ""; fi
 format-underline = #1db954
+line-size = 1
+click-left = "exec playerctl play-pause"
+
+[module/musicnext]
 type = custom/script
 interval = 3
 exec = if [ -n "$(playerctl status 2>/dev/null)" ]; then echo ; else echo ""; fi
@@ -359,4 +358,3 @@ format-underline = #1db954
 line-size = 1
 click-left = "exec playerctl previous"
 format-padding = 2
->>>>>>> old-master
