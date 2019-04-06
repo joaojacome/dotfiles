@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/bin/env python3 ~/dotfiles/scripts/spotify/py_spotify_listener.py

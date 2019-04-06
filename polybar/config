@@ -1,0 +1,362 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+[colors]
+color0 = ${xrdb:color0:#09030E}
+color1 = ${xrdb:color1:#A53E73}
+color2 = ${xrdb:color2:#553A8F}
+color3 = ${xrdb:color3:#64508C}
+color4 = ${xrdb:color4:#9C508F}
+color5 = ${xrdb:color5:#A748B3}
+color6 = ${xrdb:color6:#E45592}
+color7 = ${xrdb:color7:#e3c5bb}
+color8 = ${xrdb:color8:#9e8982}
+color9 = ${xrdb:color9:#A53E73}
+color10 = ${xrdb:color10:#553A8F}
+color11 = ${xrdb:color11:#64508C}
+color12 = ${xrdb:color12:#9C508F}
+color13 = ${xrdb:color13:#A748B3}
+color14 = ${xrdb:color14:#E45592}
+color15 = ${xrdb:color15:#e3c5bb}
+
+background = ${xrdb:color0_alpha:#CC09030E}
+background-alt = ${colors.color1}
+foreground = ${colors.color1}
+foreground-alt = #555
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+[bar/example]
+monitor = ${env:MONITOR}
+width = 100%
+height = 27
+;offset-x = 1%
+;offset-y = 1%
+radius = 0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.color6}
+
+line-size = 0
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+enable-ipc = true
+
+font-0 = Noto Serif CJK TC Medium:style=Medium,Regular:pixelsize=13;
+font-1 = Font Awesome 5 Free:style=Solid:pixelsize=16;0
+font-2 = Font Awesome 5 Brands Regular:style=Regular:pixelsize=16;0
+font-3 = Noto Serif CJK TC Medium:style=Medium,Regular:pixelsize=12;0
+
+modules-left = i3 spotify musicprev playpause musicnext
+modules-center = 
+modules-right = pulseaudio memory cpu wlan eth battery date powermenu
+
+tray-position = right
+tray-padding = 2
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+; focused = Active workspace on focused monitor
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-foreground = ${colors.background}
+label-focused-underline = ${colors.primary}
+label-focused-padding = 3
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-padding = 3
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+; Separator in between workspaces
+; label-separator = |
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+format-underline = #f90000
+format-padding = 4
+label = %percentage:2%%
+label-volume-padding-left = 2
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-padding = 4
+format-prefix-foreground = ${colors.foreground}
+label = %percentage_used%%
+label-padding-left = 2
+
+[module/wlan]
+type = internal/network
+interface = wlp2s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-padding = 4
+label-connected = %essid%
+label-connected-padding-left = 2
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground}
+
+[module/eth]
+type = internal/network
+interface = enp0s31f6
+interval = 3.0
+
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected = %local_ip%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = " %Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix = 
+format-prefix-foreground = ${colors.foreground}
+
+label = %date% %time%
+label-padding-left = 2
+format-padding = 4
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <ramp-volume> <label-volume>
+format-volume-padding = 4
+label-volume = %percentage%%
+label-volume-padding-left = 2
+label-volume-foreground = ${root.foreground}
+
+
+label-muted =  muted
+label-muted-foreground = #666
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-foreground = ${colors.foreground}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+format-charging = <animation-charging>   <label-charging>
+format-charging-padding = 4
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-padding = 4
+
+format-full-prefix = " "
+format-full-padding = 4
+format-full-prefix-foreground = ${colors.foreground}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${colors.foreground}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground}
+animation-charging-framerate = 750
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-foreground = ${colors.foreground}
+animation-discharging-framerate = 750
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-padding-right = 2
+label-open-padding-left = 2
+label-open-foreground = ${colors.foreground}
+
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+
+label-separator = |
+label-separator-foreground = ${colors.foreground}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
+
+[module/spotify]
+type = custom/script
+exec = if [ -n "$(playerctl status 2>/dev/null)" ]; then echo  $(~/dotfiles/scripts/fullwidth.sh $(playerctl metadata xesam:artist) - $(playerctl metadata xesam:title)); else echo ""; fi
+interval = 3
+format-padding = 4
+label =  %{T4} %output% %{T-}
+format-underline = #1db954
+line-size = 1
+
+
+[module/playpause]
+<<<<<<< HEAD
+type = custom/ipc
+; Default
+hook-0 = echo ""
+; Playing
+hook-1 = echo ""
+initial = 1
+format-underline = #1db954
+type = custom/script
+interval = 3
+exec = if [ -n "$(playerctl status 2>/dev/null)" ]; then echo ; else echo ""; fi
+format-underline = #1db954
+line-size = 1
+click-left = "exec playerctl next"
+format-padding = 2
+
+[module/musicprev]
+type = custom/script
+interval = 3
+exec = if [ -n "$(playerctl status 2>/dev/null)" ]; then echo ; else echo ""; fi
+format-underline = #1db954
+line-size = 1
+click-left = "exec playerctl previous"
+format-padding = 2
+>>>>>>> old-master
