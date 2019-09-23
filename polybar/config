@@ -68,10 +68,10 @@ module-margin-right = 0
 
 enable-ipc = true
 
-font-0 = Noto Serif CJK TC Medium:style=Medium,Regular:pixelsize=13;
+font-0 = Droid Sans:style=Regular:pixelsize=13;1
 font-1 = Font Awesome 5 Free:style=Solid:pixelsize=16;0
 font-2 = Font Awesome 5 Brands Regular:style=Regular:pixelsize=16;0
-font-3 = Noto Serif CJK TC Medium:style=Medium,Regular:pixelsize=12;0
+font-3 = Droid Sans:style=Regular:pixelsize=13;1
 
 modules-left = i3 spotify musicprev playpause musicnext
 modules-center = 
@@ -326,7 +326,8 @@ margin-bottom = 5
 
 [module/spotify]
 type = custom/script
-exec = if [ -n "$(playerctl status 2>/dev/null)" ]; then echo  $(~/dotfiles/scripts/fullwidth.sh $(playerctl metadata xesam:artist) - $(playerctl metadata xesam:title)); else echo ""; fi
+font = 3
+exec = if [ -n "$(playerctl status -p spotify 2>/dev/null)" ]; then echo  $(playerctl -p spotify metadata xesam:artist) - $(playerctl -p spotify metadata xesam:title); else echo ""; fi
 interval = 3
 format-padding = 4
 label =  %{T4} %output% %{T-}
@@ -336,7 +337,7 @@ line-size = 1
 [module/playpause]
 type = custom/script
 interval = 3
-exec = if [ -n "$(playerctl status 2>/dev/null)" ]; then if [ $(playerctl status) = "Playing" ]; then echo ""; else echo ""; fi; else echo ""; fi
+exec = if [ -n "$(playerctl status -p spotify 2>/dev/null)" ]; then if [ $(playerctl status -p spotify) = "Playing" ]; then echo ""; else echo ""; fi; else echo ""; fi
 format-underline = #1db954
 line-size = 1
 click-left = "exec playerctl play-pause"
@@ -344,7 +345,7 @@ click-left = "exec playerctl play-pause"
 [module/musicnext]
 type = custom/script
 interval = 3
-exec = if [ -n "$(playerctl status 2>/dev/null)" ]; then echo ; else echo ""; fi
+exec = if [ -n "$(playerctl status -p spotify 2>/dev/null)" ]; then echo ; else echo ""; fi
 format-underline = #1db954
 line-size = 1
 click-left = "exec playerctl next"
@@ -353,7 +354,7 @@ format-padding = 2
 [module/musicprev]
 type = custom/script
 interval = 3
-exec = if [ -n "$(playerctl status 2>/dev/null)" ]; then echo ; else echo ""; fi
+exec = if [ -n "$(playerctl status -p spotify 2>/dev/null)" ]; then echo ; else echo ""; fi
 format-underline = #1db954
 line-size = 1
 click-left = "exec playerctl previous"
