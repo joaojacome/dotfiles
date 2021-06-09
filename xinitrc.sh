@@ -1,5 +1,5 @@
 #!/bin/bash
 
 xset -b
-autorandr -c
+# autorandr -c
 wal -R

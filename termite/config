@@ -1,10 +1,12 @@
 [options]
-#allow_bold = true
+allow_bold = true
 #audible_bell = false
 #bold_is_bright = true
-#clickable_url = true
-#dynamic_title = true
-font = Monospace 9
+#cell_height_scale = 1.0
+#cell_width_scale = 1.0
+clickable_url = true
+dynamic_title = true
+font =  Oxygen Mono 12
 #fullscreen = true
 #icon_name = terminal
 #mouse_autohide = false
@@ -18,13 +20,13 @@ scrollback_lines = 10000
 #hyperlinks = false
 
 # $BROWSER is used by default if set, with xdg-open as a fallback
-#browser = xdg-open
+browser = xdg-open
 
 # "system", "on" or "off"
-#cursor_blink = system
+cursor_blink = system
 
 # "block", "underline" or "ibeam"
-#cursor_shape = block
+cursor_shape = block
 
 # Hide links that are no longer valid in url select overlay mode
 #filter_unmatched_urls = true
@@ -38,38 +40,33 @@ scrollback_lines = 10000
 # "off", "left" or "right"
 #scrollbar = off
 
+# ====================================
 [colors]
 
-background= rgba(31,22,38,.9)
-foreground= #FFFFFF
-cursor=     #0F9DBA
-
-color0=   #099BD7
-color10=  #2AB250
-color11=  #FFD16F
-color12=  #883CDB
-color13=  #099BD7
-color14=  #4F5D95
-color15=  #FFF8DE
-color1=   #D94085
-color2=   #2AB250
-color3=   #FFD16F
-color4=   #883CDC
-color5=   #0F9DBA
-color6=   #4F5D95
-color7=   #FFF8DD
-color8=   #099BD7
-color9=   #D94084
-
-[hints]
-#font = Monospace 12
-#foreground = #dcdccc
-#background = #3f3f3f
-#active_foreground = #e68080
-#active_background = #3f3f3f
-#padding = 2
-#border = #3f3f3f
-#border_width = 0.5
-#roundness = 2.0
-
-# vim: ft=dosini cms=#%s
+# http=//xcolors.net/dl/neon
+background=#171717
+foreground=#F8F8F8
+# black
+color0=#171717
+color8=#38252C
+# red
+color1=#D81765
+color9=#FF0000
+# green
+color2=#97D01A
+color10=#76B639
+# yellow
+color3=#FFA800
+color11=#E1A126
+# blue
+color4=#16B1FB
+color12=#289CD5
+# magenta
+color5=#FF2491
+color13=#FF2491
+# cyan
+color6=#0FDCB6
+color14=#0A9B81
+# white
+color7=#EBEBEB
+color15=#F8F8F8

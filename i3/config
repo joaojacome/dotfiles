@@ -70,7 +70,7 @@ bindsym $mod+Print --release exec --no-startup-id deepin-screenshot -f
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
-bindsym $mod+l \focus up
+bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
@@ -155,9 +155,10 @@ bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 
-workspace "1" output eDP1
-workspace "2" output DP-1-2
-workspace "3" output DP-1-1
+fake-outputs 1280x1440+0+0,2560x1440+1280+0,1280x1440+3840+0
+workspace "1" output "fake-0"
+workspace "2" output "fake-1"
+workspace "3" output "fake-2"
 
 # Move focused container to workspace
 bindsym $mod+Ctrl+1 move container to workspace $ws1
@@ -215,6 +216,19 @@ for_window [class="Xfburn"] floating enable
 for_window [title="Microsoft Teams Notification"] floating enable no_focus
 for_window [class="^jetbrains-(.*)$" title="win0"] floating enable no_focus
 
+# https://github.com/ValveSoftware/steam-for-linux/issues/1040
+for_window [class="^Steam$" title="^Friends$"] floating enable
+for_window [class="^Steam$" title="Steam - News"] floating enable
+for_window [class="^Steam$" title=".* - Chat"] floating enable
+for_window [class="^Steam$" title="^Settings$"] floating enable
+for_window [class="^Steam$" title=".* - event started"] floating enable
+for_window [class="^Steam$" title=".* CD key"] floating enable
+for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
+for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
+for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
+for_window [title="^Steam Keyboard$"] floating enable
+for_window [title="Steam - Update News"] kill
+
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
@@ -270,17 +284,17 @@ mode "resize" {
 
 # Lock screen
 # bindsym $mod+9 exec --no-startup-id blurlock
-bindsym $mod+t exec --no-startup-id pkill compton
-bindsym $mod+Ctrl+t exec --no-startup-id compton -b
-
+bindsym $mod+t exec --no-startup-id pkill picom
+bindsym $mod+Ctrl+t exec --no-startup-id picom -b --experimental-backends
 # Autostart applications
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh; sleep 2; wal -R
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+# exec --no-startup-id picom -b --experimental-backends
+exec --no-startup-id superpaper
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-clipman
 exec --no-startup-id xautolock -time 10 -locker blurlock
-exec_always --no-startup-id ff-theme-util
+exec --no-startup-id redshift
 exec_always --no-startup-id fix_xcursor
 # exec_always --no-startup-id autorandr -c
 # exec --no-startup-id blueman-applet
@@ -314,11 +328,11 @@ gaps outer -2
 # gaps outer all plus 5
 
 # Smart gaps (gaps used if only more than one container on the workspace)
-smart_gaps on
+#smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-smart_borders on
+#smart_borders on
 
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
@@ -357,17 +371,17 @@ mode "$mode_gaps_outer" {
 }
 
 
-bar {
-	i3bar_command i3bar
-	status_command i3status
-	position bottom
+#bar {
+#	i3bar_command i3bar
+#	status_command i3status
+#	position bottom
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-	tray_output primary
+#	tray_output "fake-1"
 
-	bindsym button4 nop
-	bindsym button5 nop
+#	bindsym button4 nop
+#	bindsym button5 nop
 #   font xft:URWGothic-Book 11
-	strip_workspace_numbers yes
+#	strip_workspace_numbers yes
 
-}
+#}
