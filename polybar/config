@@ -31,6 +31,15 @@ include-file = ~/.config/polybar/user_modules.ini
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
 ;; Bar Settings
+[bar/eDPI-1]
+inherits = bar/main
+monitor = eDPI-1
+modules-left = i3
+modules-center = date sep vpn-networkmanager-status sep network sep cpu sep pulseaudio sep filesystem sep temperature
+modules-right =
+tray-position = right
+
+;; Bar Settings
 [bar/VIRTUAL-2]
 inherits = bar/main
 monitor = VIRTUAL-2

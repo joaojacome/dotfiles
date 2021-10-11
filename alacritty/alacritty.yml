@@ -1,0 +1,33 @@
+env:
+  TERM: xterm-256color
+font:
+  normal:
+    family: Oxygen Mono
+
+    # The `style` can be specified to pick a specific face.
+    #style: Regular
+  size: 12.0
+colors:
+  primary:
+   background: '#171717'
+   foreground: '#F8F8F8'
+  normal:
+   black:   '#171717'
+   red:     '#D81765'
+   green:   '#97D01A'
+   yellow:  '#FFA800'
+   blue:    '#16B1FB'
+   magenta: '#FF2491'
+   cyan:    '#0FDCB6'
+   white:   '#EBEBEB'
+
+  # Bright colors
+  bright:
+   black:   '#38252C'
+   red:     '#FF0000'
+   green:   '#76B639'
+   yellow:  '#E1A126'
+   blue:    '#289CD5'
+   magenta: '#FF2491'
+   cyan:    '#0A9B81'
+   white:   '#F8F8F8'
