@@ -1,1 +1,2 @@
 eval $(ssh-agent)
+~/dotfiles/i3-start.sh
