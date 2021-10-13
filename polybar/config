@@ -35,7 +35,7 @@ include-file = ~/.config/polybar/user_modules.ini
 [bar/default]
 inherits = bar/main
 modules-left = i3
-modules-center = date sep vpn-networkmanager-status sep network-status sep cpu sep pulseaudio sep filesystem sep temperature
+modules-center = date sep vpn-networkmanager-status sep network-status sep cpu sep pulseaudio sep filesystem sep battery
 modules-right =
 tray-position = right
 
@@ -43,7 +43,7 @@ tray-position = right
 inherits = bar/main
 monitor = VIRTUAL-2
 modules-left = i3
-modules-center = date sep vpn-networkmanager-status sep network-status sep cpu sep pulseaudio sep filesystem sep temperature
+modules-center = date sep vpn-networkmanager-status sep network-status sep cpu sep pulseaudio sep filesystem sep battery
 modules-right =
 tray-position = right
  

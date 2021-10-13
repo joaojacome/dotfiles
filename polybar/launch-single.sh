@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source prepare.sh
 killall -q polybar
 
 # Wait until the processes have been shut down
