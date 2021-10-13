@@ -6,5 +6,7 @@ if [ -n "$ETHERNET" ]; then
 else
 	if [ -n "$WIRELESS" ]; then
 		echo " $WIRELESS"
+	else
+		echo " NO network connection"
 	fi
 fi
