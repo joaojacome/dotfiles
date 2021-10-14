@@ -32,3 +32,9 @@ colors:
    magenta: '#FF2491'
    cyan:    '#0A9B81'
    white:   '#F8F8F8'
+
+window:
+  padding:
+    x: 10
+    y: 10
+  dynamic_padding: true
