@@ -47,9 +47,9 @@ exec --no-startup-id start-pulseaudio-x11
 
 ################################################################################################
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/scripts/volume.sh up
-bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/scripts/volume.sh down
-bindsym XF86AudioMute exec --no-startup-id ~/.config/scripts/volume.sh mute
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.local/bin/volume.sh up
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.local/bin/volume.sh down
+bindsym XF86AudioMute exec --no-startup-id ~/.local/bin/volume.sh mute
 
 # Screen brightness controls
 # bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
@@ -247,7 +247,7 @@ bindsym $mod+Shift+r restart
 
 # Set shut down, restart and locking features
 #bindsym $mod+0 mode "$mode_system"
-bindsym $mod+Shift+0 exec rofi -show power-menu -modi power-menu:~/.config/scripts/powermenu.sh
+bindsym $mod+Shift+0 exec rofi -show power-menu -modi power-menu:~/.local/bin/powermenu.sh
 bindsym $mod+0 exec xautolock -locknow
 #set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 #mode "$mode_system" {
@@ -296,8 +296,8 @@ exec --no-startup-id xfce4-power-manager
 exec --no-startup-id parcellite -n
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
-exec --no-startup-id xautolock -time 5 -locker ~/.config/scripts/blurlock.sh
-exec_always --no-startup-id ~/.config/scripts/fix_xcursor.sh
+exec --no-startup-id xautolock -time 5 -locker ~/.local/bin/blurlock.sh
+exec_always --no-startup-id ~/.local/bin/fix_xcursor.sh
 # exec --no-startup-id redshift
 
 
