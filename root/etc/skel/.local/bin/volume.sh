@@ -44,7 +44,7 @@ case $1 in
     	# Toggle mute
 	amixer -D pulse set Master 1+ toggle > /dev/null
 	if is_mute ; then
-	    dunstify -i audio-volume-muted-blocking -r 2593 -u normal "Mute"
+	    dunstify -i audio-volume-muted -r 2593 -u normal "Mute"
 	else
 	    send_notification
 	fi
