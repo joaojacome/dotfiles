@@ -195,7 +195,7 @@
     max_icon_size=128   
 
     # Paths to default icons.x
-    icon_path = /usr/share/icons/Arc/panel/22/:/usr/share/icons/Arc/panel/16/:/usr/share/icons/Adwaita/16x16/status/:/usr/share/icons/Adwaita/16x16/devices/
+    icon_path = /usr/share/icons/Qogir-dark/24/actions:/usr/share/icons/Qogir-dark/24/devices:/usr/share/icons/Qogir-dark/24/panel:/usr/share/icons/Qogir-dark/24/places:/usr/share/icons/Qogir-dark/24/devices:/usr/share/icons/Adwaita/16x16/status/:/usr/share/icons/Adwaita/16x16/devices/
 
     ### History ###
 
